@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Cloud Architect</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0A0B10;
+            --accent: #00F2FF;
+            --silver: #E0E0E0;
+            --grey: #6B7280;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--silver);
+            font-family: 'JetBrains Mono', monospace;
+            overflow-x: hidden;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(0, 242, 255, 0.1);
+        }
+
+        .hero h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            line-height: 0.9;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .hero p {
+            max-width: 600px;
+            font-size: 1.1rem;
+            color: var(--grey);
+            line-height: 1.6;
+        }
+
+        /* --- Horizontal Scroll Gallery --- */
+        .project-wrapper {
+            overflow: hidden;
+            background: #0d0e14;
+        }
+
+        .horizontal-scroll {
+            display: flex;
+            width: 300vw; /* Adjust based on number of projects */
+            height: 80vh;
+            align-items: center;
+            padding: 0 10vw;
+        }
+
+        .project-card {
+            width: 60vw;
+            margin-right: 15vw;
+            flex-shrink: 0;
+            border-left: 2px solid var(--accent);
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.02);
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            background: rgba(0, 242, 255, 0.05);
+        }
+
+        .project-card h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* --- Philosophy Section --- */
+        .philosophy {
+            min-height: 100vh;
+            padding: 10rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .philosophy h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: 3.5rem;
+            color: var(--accent);
+        }
+
+        .content-box {
+            border: 1px solid var(--grey);
+            padding: 3rem;
+            position: relative;
+        }
+
+        .content-box::before {
+            content: "SYSTEM_LOG";
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: var(--bg);
+            padding: 0 10px;
+            font-size: 0.8rem;
+            color: var(--accent);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--accent); }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <h1>From Clinical <br> Precision to <br> Cloud Arch.</h1>
+        <p>
+            Applying surgical-grade reliability to high-availability AWS ecosystems. 
+            Scroll to initialize data transfer.
+        </p>
+    </section>
+
+    <div class="project-wrapper">
+        <div class="horizontal-scroll" id="scrollContainer">
+            <div class="project-card">
+                <span>PROJECT_01</span>
+                <h3>AWS Infrastructure Migration</h3>
+                <p>Scaling on-premises data to elastic cloud environments with zero downtime.</p>
+            </div>
+            <div class="project-card">
+                <span>PROJECT_02</span>
+                <h3>Relational Database Design</h3>
+                <p>Structured schemas built for high-concurrency and data integrity.</p>
+            </div>
+            <div class="project-card">
+                <span>PROJECT_03</span>
+                <h3>Serverless Logic Flow</h3>
+                <p>Optimizing Lambda functions for cost-efficiency and performance.</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="philosophy">
+        <div>
+            <h2>The High Availability Mindset</h2>
+        </div>
+        <div class="content-box">
+            <p>
+                In healthcare, "downtime" isn't a bug—it's a critical failure. I bring that same 
+                urgency to cloud infrastructure. 
+                <br><br>
+                My approach is rooted in <strong>Clinical Reliability</strong>: 
+                building systems that are fault-tolerant, secure by design, and 
+                mathematically precise.
+            </p>
+        </div>
+    </section>
+
+    <script>
+        // Simple horizontal scroll effect on vertical scroll
+        const scrollContainer = document.getElementById('scrollContainer');
+        
+        window.addEventListener('scroll', () => {
+            const scrollPos = window.scrollY;
+            const heroHeight = window.innerHeight;
+            
+            if (scrollPos > heroHeight) {
+                const horizontalOffset = (scrollPos - heroHeight) * 0.8;
+                scrollContainer.style.transform = `translateX(-${horizontalOffset}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
